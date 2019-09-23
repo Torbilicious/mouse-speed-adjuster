@@ -16,14 +16,12 @@ int getCurrentMouseSpeed() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 int main() {
-    std::cout << "Starting Torbilicious' Mouse Speed Adjuster." << std::endl;
-
-    int currentMouseSpeed = 0;
-    SystemParametersInfo(SPI_GETMOUSESPEED, 0, &currentMouseSpeed, 0);
-    std::cout << "Current Mouse Speed: " << currentMouseSpeed << std::endl;
-
-
     const int targetSpeed = 18;
+
+    std::cout << "Starting Torbilicious' Mouse Speed Adjuster." << std::endl;
+    std::cout << "Target Mouse Speed: " << targetSpeed << std::endl;
+
+
     for (;;) {
         if (getCurrentMouseSpeed() != targetSpeed) {
             std::cout << "Setting speed to: " << targetSpeed << std::endl;
