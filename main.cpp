@@ -4,11 +4,11 @@
 #include <thread>
 
 
-bool isMouseSpeedAtTarget(int targetSpeed) {
+int getCurrentMouseSpeed() {
     int currentMouseSpeed = 0;
     SystemParametersInfo(SPI_GETMOUSESPEED, 0, &currentMouseSpeed, 0);
 
-    return currentMouseSpeed == targetSpeed;
+    return currentMouseSpeed;
 }
 
 
@@ -25,7 +25,7 @@ int main() {
 
     const int targetSpeed = 18;
     for (;;) {
-        if (!isMouseSpeedAtTarget(targetSpeed)) {
+        if (getCurrentMouseSpeed() != targetSpeed) {
             std::cout << "Setting speed to: " << targetSpeed << std::endl;
             SystemParametersInfo(
                     SPI_SETMOUSESPEED,
